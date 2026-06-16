@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFCore Premium - Asadbek Alijonov</title>
+    <!-- Google Fonts (Zamonaviy shriftlar) -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Ikonkalari -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF Engine Kutubxonalari -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Orqa fondagi jozibador yorug'lik effektlari (Glow Effects) -->
+    <div class="glow-bg-1"></div>
+    <div class="glow-bg-2"></div>
+
+    <!-- Navigatsiya paneli -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                PDF<span>Core</span>
+            </a>
+            
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <select id="lang-select" onchange="changeLanguage(this.value)">
+                        <option value="uz">O'zbekcha</option>
+                        <option value="en">English</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </div>
+                <div class="owner-badge">
+                    <div class="badge-dot"></div>
+                    <span data-i18n="ownerText">Loyiha egasi:</span> &nbsp;<strong>Asadbek Alijonov</strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Asosiy Qism -->
+    <main class="main-container">
+        <header class="hero-section">
+            <div class="version-tag">PRO EDITION v2.5</div>
+            <h1 data-i18n="heroTitle">Professional PDF Uskunalar Majmuasi</h1>
+            <p data-i18n="heroDesc">Fayllaringiz hech qanday serverga yuklanmaydi, barcha amallar real vaqt rejimida brauzeringiz ichida 100% xavfsiz bajariladi.</p>
+        </header>
+
+        <!-- KATEGORIYALI GRID TIZIMI -->
+        <div class="tools-grid">
+            
+            <!-- 1. MERGE PDF -->
+            <div class="tool-box red-theme" onclick="openTool('merge-tool')">
+                <div class="tool-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="tool-content">
+                    <h3 data-i18n="tMergeTitle">PDF Birlashtirish</h3>
+                    <p data-i18n="tMergeDesc">Bir nechta PDF fayllarni istalgan ketma-ketlikda bitta butun hujjatga yig‘ish.</p>
+                </div>
+                <div class="hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+            <!-- 2. SPLIT PDF -->
+            <div class="tool-box orange-theme" onclick="openTool('split-tool')">
+                <div class="tool-icon"><i class="fa-solid fa-scissors"></i></div>
+                <div class="tool-content">
+                    <h3 data-i18n="tSplitTitle">PDF Ajratish</h3>
+                    <p data-i18n="tSplitDesc">Katta hajmli PDF hujjatidan kerakli sahifalarni soniyada qirqib olish.</p>
+                </div>
+                <div class="hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+            <!-- 3. IMAGE TO PDF -->
+            <div class="tool-box yellow-theme" onclick="openTool('img-tool')">
+                <div class="tool-icon"><i class="fa-solid fa-file-image"></i></div>
+                <div class="tool-content">
+                    <h3 data-i18n="tImgTitle">Rasm -> PDF</h3>
+                    <p data-i18n="tImgDesc">JPG, PNG rasmlarni elektron kitob yoki taqdimot hujjatiga aylantirish.</p>
+                </div>
+                <div class="hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+            <!-- 4. TEXT TO PDF -->
+            <div class="tool-box blue-theme" onclick="openTool('text-tool')">
+                <div class="tool-icon"><i class="fa-solid fa-align-left"></i></div>
+                <div class="tool-content">
+                    <h3 data-i18n="tTextTitle">Matn -> PDF</h3>
+                    <p data-i18n="tTextDesc">Istalgan matn yoki ma'ruzalarni yozib, undan rasmiy PDF fayl olish.</p>
+                </div>
+                <div class="hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+            <!-- 5. PROTECT PDF -->
+            <div class="tool-box purple-theme" onclick="openTool('lock-tool')">
+                <div class="tool-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="tool-content">
+                    <h3 data-i18n="tLockTitle">PDF Parollash</h3>
+                    <p data-i18n="tLockDesc">Hujjatlaringiz xavfsizligi va maxfiyligi uchun shifrlangan parol qo‘yish.</p>
+                </div>
+                <div class="hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+            <!-- 6. REMOVE PAGES -->
+            <div class="tool-box pink-theme" onclick="openTool('remove-tool')">
+                <div class="tool-icon"><i class="fa-solid fa-folder-minus"></i></div>
+                <div class="tool-content">
+                    <h3 data-i18n="tRemoveTitle">Sahifalarni O‘chirish</h3>
+                    <p data-i18n="tRemoveDesc">PDF hujjati ichidagi ortiqcha, xato yoki keraksiz sahifalarni tozalash.</p>
+                </div>
+                <div class="hover-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </div>
+
+        </div>
+
+        <!-- AMALIY ISHCHI INTERFEYS MODALI -->
+        <div id="active-tool-container" class="active-tool-card animate-fade-in">
+            <button class="back-to-grid-btn" onclick="closeTool()">
+                <i class="fa-solid fa-arrow-left-long"></i> <span data-i18n="backBtn">Asosiy menyuga qaytish</span>
+            </button>
+            <div id="tool-dynamic-content"></div>
+        </div>
+
+    </main>
+
+    <!-- Footer qismi -->
+    <footer class="main-footer">
+        <p>&copy; 2026 PDFCore Professional. <span data-i18n="footerRights">Barcha huquqlar qat'iy himoyalangan.</span></p>
+        <p class="credits"><span data-i18n="footerDev">Loyihani ishlab chiquvchi texnik direktor:</span> <strong>Asadbek Alijonov</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

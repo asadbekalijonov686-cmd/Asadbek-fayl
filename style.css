@@ -1,0 +1,187 @@
+:root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 30, 49, 0.7);
+    --card-hover: rgba(30, 41, 67, 0.9);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #6366f1;
+    --radius-lg: 24px;
+    --radius-sm: 14px;
+}
+
+/* Asosiy Reset sozlamalari */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Orqa fondagi Neon Glow doiralari */
+.glow-bg-1 {
+    position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(0,0,0,0) 70%); top: -10%; left: -10%; z-index: -1;
+}
+.glow-bg-2 {
+    position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, rgba(0,0,0,0) 70%); bottom: 10%; right: -5%; z-index: -1;
+}
+
+/* Premium Navigatsiya paneli */
+.navbar {
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.2rem 2rem;
+    position: sticky; top: 0; z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1250px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--text-main);
+    text-decoration: none; display: flex; align-items: center; gap: 0.75rem;
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;
+}
+
+.logo span { color: var(--primary); }
+.nav-actions { display: flex; align-items: center; gap: 1.25rem; }
+
+/* Til tanlash qismi */
+.lang-selector {
+    background: rgba(255, 255, 255, 0.05); padding: 0.6rem 1rem; border-radius: 40px;
+    display: flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color);
+}
+
+.lang-selector select {
+    background: transparent; border: none; color: var(--text-main);
+    font-size: 0.9rem; font-weight: 600; outline: none; cursor: pointer;
+}
+
+/* Muallif yorlig'i */
+.owner-badge {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(14, 165, 233, 0.15));
+    color: #818cf8; padding: 0.6rem 1.4rem; border-radius: 40px;
+    font-size: 0.9rem; font-weight: 500; display: flex; align-items: center;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.owner-badge strong { color: #fff; font-weight: 700; }
+.badge-dot { width: 8px; height: 8px; background-color: #34d399; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #34d399; }
+
+/* Hero Qismi */
+.main-container { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
+.hero-section { text-align: center; margin-bottom: 4rem; }
+
+.version-tag {
+    background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted); display: inline-block; padding: 0.3rem 1rem;
+    border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 1.25rem;
+}
+
+.hero-section h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.8rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; background: linear-gradient(180deg, #fff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-section p { color: var(--text-muted); font-size: 1.15rem; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+/* iLovePDF zamonaviy shishasimon Grid bloklari */
+.tools-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+}
+
+.tool-box {
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    padding: 2rem; border-radius: var(--radius-lg); cursor: pointer;
+    display: flex; align-items: flex-start; gap: 1.25rem; position: relative; overflow: hidden;
+    backdrop-filter: blur(8px);
+}
+
+.tool-box:hover {
+    background: var(--card-hover); transform: translateY(-5px); border-color: rgba(255,255,255,0.2);
+}
+
+.tool-icon {
+    width: 54px; height: 54px; border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;
+}
+
+/* Mavzular rang kombinatsiyasi */
+.red-theme .tool-icon { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.orange-theme .tool-icon { background: rgba(249, 115, 22, 0.15); color: #fb923c; }
+.yellow-theme .tool-icon { background: rgba(234, 179, 8, 0.15); color: #facc15; }
+.blue-theme .tool-icon { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.purple-theme .tool-icon { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+.pink-theme .tool-icon { background: rgba(225, 29, 72, 0.15); color: #fda4af; }
+
+.tool-content h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.tool-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; padding-right: 1.5rem; }
+
+.hover-arrow { position: absolute; right: 1.5rem; bottom: 1.5rem; color: var(--text-muted); opacity: 0; transform: translateX(-5px); transition: 0.2s; }
+.tool-box:hover .hover-arrow { opacity: 1; transform: translateX(0); color: #fff; }
+
+/* Dinamik Ishchi Paneli (Dizayni Mukammallashgan) */
+.active-tool-card {
+    background: rgba(22, 30, 49, 0.95); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-lg); padding: 3rem; display: none; backdrop-filter: blur(20px);
+}
+
+.back-to-grid-btn {
+    background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-main);
+    padding: 0.6rem 1.4rem; border-radius: 40px; font-weight: 600; cursor: pointer; margin-bottom: 2.5rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.back-to-grid-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+/* Yuklash Oynasi (Drag and Drop UI) */
+.upload-zone {
+    border: 2px dashed rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.02);
+    padding: 4.5rem 2rem; border-radius: var(--radius-lg); text-align: center; cursor: pointer;
+}
+.upload-zone:hover { border-color: var(--primary); background: rgba(99, 102, 241, 0.05); }
+.upload-zone i { font-size: 3.5rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+
+/* Real vaqt ro'yxati */
+.preview-container { margin: 2rem 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.file-item {
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border-color);
+    padding: 1rem 1.25rem; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;
+}
+
+/* Premium Harakat tugmasi */
+.action-btn {
+    width: 100%; padding: 1.2rem; border: none; border-radius: var(--radius-sm);
+    font-size: 1.1rem; font-weight: 700; cursor: pointer; color: white;
+    background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+}
+.action-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.6); }
+.action-btn:disabled { background: #334155; color: #64748b; box-shadow: none; cursor: not-allowed; }
+
+/* Input Maydonlari */
+.text-area-input { width: 100%; height: 200px; padding: 1.2rem; border-radius: var(--radius-sm); background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: white; font-size: 1rem; margin-bottom: 1.5rem; outline: none; }
+.text-area-input:focus { border-color: var(--primary); }
+.num-input, .pass-input { width: 100%; padding: 1rem; border-radius: var(--radius-sm); background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); color: white; font-size: 1rem; margin-bottom: 1.5rem; outline: none; }
+
+/* Footer */
+.main-footer { text-align: center; margin-top: 7rem; padding: 3rem; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.95rem; }
+.credits { margin-top: 0.5rem; font-size: 0.9rem; color: #cbd5e1; }
+.credits strong { color: #818cf8; }
+
+/* Animatsiyalar */
+.animate-fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
